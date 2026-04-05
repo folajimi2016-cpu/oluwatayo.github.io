@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dada Oluwatayo | Virtual Assistant Portfolio</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #eef6fc;  /* Soft light blue background */
+      color: #0a2540;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ===== ANIMATION for heading ===== */
+    @keyframes gentleSlideFade {
+      0% {
+        opacity: 0;
+        transform: translateY(-18px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hero Section with light blue gradient */
+    .hero {
+      background: linear-gradient(135deg, #cfe9ff 0%, #d9efff 100%);
+      color: #0a2b44;
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 12px 28px -8px rgba(0, 70, 120, 0.12);
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    /* Animated heading */
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(120deg, #0369a1, #0f3b5c);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: gentleSlideFade 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    }
+
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1.2rem 0 0.8rem;
+      font-size: 0.95rem;
+      color: #1e4a6e;
+    }
+
+    .contact-bar a, .contact-bar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #1e4a6e;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      background: rgba(255,255,255,0.5);
+      padding: 0.2rem 0.7rem;
+      border-radius: 60px;
+    }
+
+    /* direct call/email hover effect */
+    .contact-bar a[href^="tel"]:hover,
+    .contact-bar a[href^="mailto"]:hover {
+      background: #ffffffc9;
+      color: #0369a1;
+      transform: translateY(-2px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .contact-bar a:hover {
+      background: #ffffffc9;
+      color: #0369a1;
+      transform: translateY(-2px);
+    }
+
+    /* section styling with light blue cards */
+    .section {
+      background: #ffffffdd;
+      backdrop-filter: blur(0px);
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 14px rgba(0, 60, 90, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #d9eaff;
+    }
+
+    .section:hover {
+      box-shadow: 0 20px 30px -12px rgba(0, 100, 130, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      border-left: 5px solid #3b82f6;
+      padding-left: 1rem;
+      color: #0f3b5c;
+    }
+
+    .summary-text {
+      font-size: 1.05rem;
+      color: #1f4662;
+      line-height: 1.6;
+      background: #f0f9ff;
+      padding: 1.2rem 1.5rem;
+      border-radius: 1.2rem;
+      border-left: 3px solid #7ab7e0;
+    }
+
+    /* skills grid */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .skill-tag {
+      background: #e2f0ff;
+      color: #0369a1;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: #3b82f6;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .tool-category {
+      background: #f6fbfe;
+      border-radius: 1rem;
+      padding: 0.7rem 1.2rem;
+      flex: 1 1 180px;
+      border: 1px solid #cde5f5;
+    }
+
+    .tool-category h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #0a4b6e;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .tool-category p {
+      font-size: 0.85rem;
+      color: #2c6282;
+      line-height: 1.4;
+    }
+
+    .exp-item {
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid #d9edfa;
+      padding-bottom: 1.5rem;
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-role {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0a2f44;
+    }
+
+    .exp-company {
+      font-weight: 600;
+      color: #2c7ab1;
+    }
+
+    .exp-date {
+      font-size: 0.8rem;
+      color: #3a789b;
+      background: #e6f2fa;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+    }
+
+    .exp-list {
+      margin-left: 1.2rem;
+      margin-top: 0.6rem;
+    }
+
+    .exp-list li {
+      margin-bottom: 0.5rem;
+      color: #2c5a77;
+      font-size: 0.95rem;
+    }
+
+    .edu-item, .cert-item {
+      margin-bottom: 1rem;
+    }
+
+    .edu-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #0a3b57;
+    }
+
+    .meta {
+      color: #3a6f8f;
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+    }
+
+    .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+
+    .col {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .additional-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: #eef5fc;
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .info-badge {
+      background: white;
+      border-radius: 60px;
+      padding: 0.3rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      color: #0369a1;
+    }
+
+    hr {
+      margin: 1rem 0;
+      border: none;
+      border-top: 1px solid #cce2f2;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      .hero {
+        padding: 1.8rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .section {
+        padding: 1.3rem;
+      }
+      .exp-header {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+    }
+
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(2, 84, 126, 0.1);
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      font-size: 0.85rem;
+      transition: 0.2s;
+      color: #0a4b6e;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(2, 84, 126, 0.2);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #4c7a9c;
+      border-top: 1px solid #cbe1f0;
+      padding-top: 1.8rem;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    i {
+      width: 1.2rem;
+    }
+
+    .highlight-badge {
+      background: #d4eaff;
+    }
+
+    /* direct action buttons row - extra visibility */
+    .direct-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      align-items: center;
+    }
+    .call-btn, .email-btn {
+      background: white;
+      border-radius: 60px;
+      padding: 0.5rem 1.2rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid #bdd9ef;
+    }
+    .call-btn {
+      color: #0369a1;
+    }
+    .email-btn {
+      color: #0369a1;
+    }
+    .call-btn:hover, .email-btn:hover {
+      background: #eef5fc;
+      transform: translateY(-2px);
+      border-color: #3b82f6;
+      box-shadow: 0 6px 12px -8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Hero + animated heading & contact -->
+  <div class="hero">
+    <h1>DADA OLUWATAYO OLANREWAJU</h1>
+    <!-- contact bar with clickable phone number and email (tel & mailto) -->
+    <div class="contact-bar">
+      <!-- Email with mailto: redirect to email client -->
+      <a href="mailto:oluwatayodada2@gmail.com"><i class="fas fa-envelope"></i> oluwatayodada2@gmail.com</a>
+      <!-- Phone number with tel: opens dialer on mobile / call app -->
+      <a href="tel:+2347067971205"><i class="fas fa-phone-alt"></i> +234 706 797 1205</a>
+      <a href="https://rb.gy/0q42i3" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+    <!-- additional clear call to action buttons: direct call / email (enhanced) -->
+    <div class="direct-actions">
+      <a href="tel:+2347067971205" class="call-btn"><i class="fas fa-phone-volume"></i> Call Me Now</a>
+      <a href="mailto:oluwatayodada2@gmail.com" class="email-btn"><i class="fas fa-paper-plane"></i> Send Email</a>
+    </div>
+    <div style="margin-top: 1rem;">
+      <span class="btn-outline-light"><i class="fas fa-clock"></i> Remote / Hybrid</span>
+      <span class="btn-outline-light" style="margin-left: 0.6rem;"><i class="fas fa-calendar-week"></i> 40 hrs/week available</span>
+    </div>
+  </div>
+
+  <!-- Professional Summary -->
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <div class="summary-text">
+      <i class="fas fa-user-check" style="color: #2c7ab1; margin-right: 0.5rem;"></i> 
+      Organized and proactive Virtual Assistant with 3+ years of client-facing and administrative experience in scheduling, CRM management, and client onboarding. Skilled in calendar and email management, data entry, meeting coordination, and basic bookkeeping. Proven track record of reducing response time by 40% and improving client satisfaction by 25%. Reliable support for small teams and solo entrepreneurs.
+    </div>
+  </div>
+
+  <!-- Core Skills + Tools -->
+  <div class="section">
+    <div class="section-title">Core Skills</div>
+    <div class="skills-grid">
+      <span class="skill-tag">📅 Calendar & Email Management</span>
+      <span class="skill-tag">📆 Appointment Scheduling</span>
+      <span class="skill-tag">📊 Data Entry & Record Management</span>
+      <span class="skill-tag">🗂️ File Organization</span>
+      <span class="skill-tag">✈️ Travel & Meeting Coordination</span>
+      <span class="skill-tag">💰 Basic Bookkeeping (invoicing)</span>
+      <span class="skill-tag">🎧 Customer Service Representative</span>
+      <span class="skill-tag">🎨 Basic Graphics Design (Canva/Postermywall)</span>
+    </div>
+
+    <hr>
+
+    <div class="section-title" style="font-size: 1.4rem; margin-bottom: 1rem;">Communication & Collaboration Tools</div>
+    <div class="tools-list">
+      <div class="tool-category">
+        <h4><i class="fas fa-comments"></i> Communication</h4>
+        <p>Slack · Microsoft Teams · Zoom · Google Meet</p>
+      </div>
+      <div class="tool-category">
+        <h4><i class="fas fa-tasks"></i> Collaboration</h4>
+        <p>Asana · Trello · Google Workspace · Microsoft 365</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Professional Experience -->
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div><span class="exp-role">Customer Service Representative (Hybrid)</span> — <span class="exp-company">Softlyft Technologies</span></div>
+        <div class="exp-date">Jan 2025 – Present</div>
+      </div>
+      <ul class="exp-list">
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Managed 20+ customer interactions daily across phone, email, and chat while maintaining accurate CRM records and serving as the primary client contact for all scheduling and bookings.</li>
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Reduced response time by 40% by creating standardized email templates and streamlining administrative document processes.</li>
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Improved client satisfaction by 25% through collecting feedback and implementing small process recommendations that enhanced overall service efficiency.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div><span class="exp-role">Virtual Assistant (Freelance, Part-time)</span> — <span class="exp-company">Self-employed</span></div>
+        <div class="exp-date">Jun 2023 – Dec 2024</div>
+      </div>
+      <ul class="exp-list">
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Juggled administrative support for two busy clients, a freelance web designer and a small coaching business by managing their emails, calendars, and client follow-ups, which helped free up 5+ hours of their time each week to focus on revenue-generating work.</li>
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Kept meetings running smoothly and efficiently, scheduling 15+ client calls per week, setting up Zoom/Google Meet links, preparing quick agendas ahead of time, and sharing clear notes afterward cutting meeting prep time in half.</li>
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Stayed on top of the money side of things by handling basic invoicing and payment tracking for multiple clients using simple spreadsheets, reducing overdue payments by 30% and ensuring every invoice was followed up on within 24 hours.</li>
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Reduced missed appointments by 30% by implementing confirmation reminders.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div><span class="exp-role">Administrative Intern</span> — <span class="exp-company">Community Learning Hub, Lagos (Volunteer)</span></div>
+        <div class="exp-date">Mar 2023 – May 2023</div>
+      </div>
+      <ul class="exp-list">
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Helped coordinate digital skills workshops that served 50+ attendees per event by handling attendee registration, managing check-in lists, preparing materials ahead of time, and making sure everything ran smoothly on the day.</li>
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Kept communication flowing and attendees engaged by sending personalized follow-up emails after each workshop, which led to a 35% increase in repeat attendance for future sessions.</li>
+        <li><i class="fas fa-check-circle" style="color:#3b82f6; font-size:0.8rem;"></i> Saved volunteers hours of digging for information by organizing digital files and performing light data entry, cutting the time they spent searching for documents by 50% and making everything easy to find at a glance.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Education + Certifications -->
+  <div class="section">
+    <div class="flex-row">
+      <div class="col">
+        <div class="section-title" style="font-size: 1.4rem;">Education</div>
+        <div class="edu-item">
+          <div class="edu-title">🎓 Master of Arts (MA) in English</div>
+          <div class="meta">University of Lagos — Oct 2022 – Jan 2024</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-title">🎓 Bachelor of Arts (BA) in English</div>
+          <div class="meta">Ekiti State University — Nov 2015 – Feb 2019</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="section-title" style="font-size: 1.4rem;">Certifications</div>
+        <div class="cert-item">
+          <div class="edu-title">📜 Certified Training and Development Professionals (CTDP)</div>
+        </div>
+        <div class="cert-item">
+          <div class="edu-title">📘 Virtual Assistant Training, a complete Guide (Udemy)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Information -->
+  <div class="section">
+    <div class="section-title">Additional Information</div>
+    <div class="additional-info">
+      <span class="info-badge"><i class="fas fa-globe"></i> Availability: Remote/hybrid</span>
+      <span class="info-badge"><i class="fas fa-hourglass-half"></i> Available to work 40 hours per week</span>
+      <span class="info-badge"><i class="fas fa-file-alt"></i> References: Available on request</span>
+    </div>
+    <div style="margin-top: 1rem; font-size: 0.9rem; background: #e4f0fa; border-radius: 1rem; padding: 0.8rem 1rem; color:#025e8a;">
+      <i class="fas fa-star-of-life" style="margin-right: 0.4rem;"></i> 
+      Open to full-time virtual assistant roles, administrative coordination, and customer support opportunities.
+    </div>
+    <!-- Optional quick contact reminder: consistent with removal of portfolio section -->
+    <div style="margin-top: 1.2rem; display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: flex-start;">
+      <a href="tel:+2347067971205" style="background:#eaf3fc; border-radius: 40px; padding: 0.3rem 1.2rem; font-size:0.85rem;"><i class="fas fa-phone"></i> Tap to call</a>
+      <a href="mailto:oluwatayodada2@gmail.com" style="background:#eaf3fc; border-radius: 40px; padding: 0.3rem 1.2rem; font-size:0.85rem;"><i class="fas fa-envelope"></i> Send an email</a>
+    </div>
+  </div>
+
+  <footer>
+    <p><i class="far fa-copyright"></i> 2025 Dada Oluwatayo Olanrewaju — Virtual Assistant Portfolio</p>
+    <p style="margin-top: 0.4rem; font-size:0.75rem;">📞 <a href="tel:+2347067971205" style="color:#2c7ab1; text-decoration:underline;">Call me</a> • ✉️ <a href="mailto:oluwatayodada2@gmail.com" style="color:#2c7ab1; text-decoration:underline;">Email me</a> • Let’s connect!</p>
+  </footer>
+</div>
+</body>
+</html>
